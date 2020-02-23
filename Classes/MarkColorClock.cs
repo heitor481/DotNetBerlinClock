@@ -5,28 +5,11 @@ namespace BerlinClock.Classes
 {
     public class MarkColorClock : IMarkColorClock
     {
-        private const int TotalOfSecondsThatTheFirstLampBlinks = 2;
-        private const int HourOfTheFirstRowLamp = 5;
-
-        private const int FirstQuarterPositionOfAnHour = 3;
-        private const int HalfQuarterPositionOfAnHour = 6;
-        private const int LastQuarterPositionOfAnHour = 9;
-
-        private const int MinuteOfTheFirstLastLamp = 1;
-        private const int MinuteOfTheSecondtLastLamp = 2;
-        private const int MinuteOfTheThirdLastLamp = 3;
-        private const int MinuteOfTheForthLastLamp = 4;
-
-        private const int HourOfTheFirstLampOfSecondRow = 1;
-        private const int HourOfTheSecondLampRow = 2;
-        private const int HourOfTheThirdLampOfSecondRow = 3;
-        private const int HourOfTheForthLampOfSecondRow = 4;
-
-        public string FindFirstLampBlink(int secondsComingFromTheClock)
+        public StringBuilder FindFirstLampBlink(int secondsComingFromTheClock)
         {
             StringBuilder firstLampBlink = new StringBuilder();
 
-            if (secondsComingFromTheClock % TotalOfSecondsThatTheFirstLampBlinks == 0)
+            if (secondsComingFromTheClock % ClockLamps.TotalOfSecondsThatTheFirstLampBlinks == 0)
             {
                 firstLampBlink.Append("Y\r\n");
             }
@@ -35,122 +18,136 @@ namespace BerlinClock.Classes
                 firstLampBlink.Append("O\r\n");
             }
 
-            return firstLampBlink.ToString();
+            return firstLampBlink;
         }
 
-        public string FindFirstRowLampBlink(int hoursCommingFromTheClock, string firstLampBlink)
+        public StringBuilder FindFirstRowLampBlink(int hoursCommingFromTheClock, StringBuilder firstLampBlink)
         {
-            StringBuilder firstRowLampBlink = new StringBuilder();
 
-            if (hoursCommingFromTheClock < HourOfTheFirstRowLamp)
+            if (hoursCommingFromTheClock < ClockLamps.HourOfTheFirstRowLamp)
             {
-                firstRowLampBlink.Append("OOOO\r\n");
+                firstLampBlink.Append("OOOO\r\n");
             }
 
-            if (hoursCommingFromTheClock == HourOfTheFirstRowLamp)
+            if (hoursCommingFromTheClock == ClockLamps.HourOfTheFirstRowLamp)
             {
-                firstRowLampBlink.Append("ROOO\r\n");
+                firstLampBlink.Append("ROOO\r\n");
             }
 
-            if (hoursCommingFromTheClock >= 10 && hoursCommingFromTheClock <= 14)
+            if (hoursCommingFromTheClock >= ClockLamps.TenthPositionOfAnHour && hoursCommingFromTheClock <= 14)
             {
-                firstRowLampBlink.Append("RROO\r\n");
+                firstLampBlink.Append("RROO\r\n");
             }
 
             if (hoursCommingFromTheClock >= 15 && hoursCommingFromTheClock < 20)
             {
-                firstRowLampBlink.Append("RRRO\r\n");
+                firstLampBlink.Append("RRRO\r\n");
             }
 
             if (hoursCommingFromTheClock >= 20)
             {
-                firstRowLampBlink.Append("RRRR\r\n");
+                firstLampBlink.Append("RRRR\r\n");
             }
 
-            return firstLampBlink += firstRowLampBlink.ToString();
+            return firstLampBlink;
         }
 
-        public string FindSecondRowLampBlink(int hoursCommingFromTheClock, string firstLampBlink)
+        public StringBuilder FindSecondRowLampBlink(int hoursCommingFromTheClock, StringBuilder firstLampBlink)
         {
-            StringBuilder secondRowLampBlink = new StringBuilder();
-            int hoursModule = hoursCommingFromTheClock % HourOfTheFirstRowLamp;
+            int hoursModule = hoursCommingFromTheClock % ClockLamps.HourOfTheFirstRowLamp;
 
             switch (hoursModule)
             {
-                case HourOfTheFirstLampOfSecondRow:
-                    secondRowLampBlink.Append("ROOO\r\n");
+                case ClockLamps.HourOfTheFirstLampOfSecondRow:
+                    firstLampBlink.Append("ROOO\r\n");
                     break;
-                case HourOfTheSecondLampRow:
-                    secondRowLampBlink.Append("RROO\r\n");
+                case ClockLamps.HourOfTheSecondLampRow:
+                    firstLampBlink.Append("RROO\r\n");
                     break;
-                case HourOfTheThirdLampOfSecondRow:
-                    secondRowLampBlink.Append("RRRO\r\n");
+                case ClockLamps.HourOfTheThirdLampOfSecondRow:
+                    firstLampBlink.Append("RRRO\r\n");
                     break;
-                case HourOfTheForthLampOfSecondRow:
-                    secondRowLampBlink.Append("RRRR\r\n");
+                case ClockLamps.HourOfTheForthLampOfSecondRow:
+                    firstLampBlink.Append("RRRR\r\n");
                     break;
                 default:
-                    secondRowLampBlink.Append("OOOO\r\n");
+                    firstLampBlink.Append("OOOO\r\n");
                     break;
             }
 
-            return firstLampBlink += secondRowLampBlink.ToString();
+            return firstLampBlink;
         }
 
-        public string FindThirdRowLampBlink(int minutesCommingFromTheClock, string firstLampBlink)
+        public StringBuilder FindThirdRowLampBlink(int minutesCommingFromTheClock, StringBuilder firstLampBlink)
         {
-            StringBuilder thirdRowLampBlink = new StringBuilder();
-            int minutesDivided = minutesCommingFromTheClock / HourOfTheFirstRowLamp;
+            int minutesDivided = minutesCommingFromTheClock / ClockLamps.HourOfTheFirstRowLamp;
 
             switch (minutesDivided)
             {
-                case FirstQuarterPositionOfAnHour:
-                    thirdRowLampBlink.Append("YYROOOOOOOO\r\n");
+                case ClockLamps.FirstPositionOfAnHour:
+                    firstLampBlink.Append("YOOOOOOOOOO\r\n");
                     break;
-                case HalfQuarterPositionOfAnHour:
-                    thirdRowLampBlink.Append("YYRYYROOOOO\r\n");
+                case ClockLamps.SecondPositionOfAnHour:
+                    firstLampBlink.Append("YYOOOOOOOOO\r\n");
                     break;
-                case LastQuarterPositionOfAnHour:
-                    thirdRowLampBlink.Append("YYRYYRYYROO\r\n");
+                case ClockLamps.FirstQuarterPositionOfAnHour:
+                    firstLampBlink.Append("YYROOOOOOOO\r\n");
                     break;
-                case 11:
-                    thirdRowLampBlink.Append("YYRYYRYYRYY\r\n");
+                case ClockLamps.ForthPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYOOOOOO\r\n");
+                    break;
+                case ClockLamps.HalfQuarterPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYROOOOO\r\n");
+                    break;
+                case ClockLamps.SeventhPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYRYOOOO\r\n");
+                    break;
+                case ClockLamps.EigthPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYRYYOOO\r\n");
+                    break;
+                case ClockLamps.LastQuarterPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYRYYROO\r\n");
+                    break;
+                case ClockLamps.TenthPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYRYYRYO\r\n");
+                    break;
+                case ClockLamps.EleventhPositionOfAnHour:
+                    firstLampBlink.Append("YYRYYRYYRYY\r\n");
                     break;
                 default:
-                    thirdRowLampBlink.Append("OOOOOOOOOOO\r\n");
+                    firstLampBlink.Append("OOOOOOOOOOO\r\n");
                     break;
             }
 
-            return firstLampBlink += thirdRowLampBlink.ToString();
+            return firstLampBlink;
 
         }
 
 
-        public string FindLastRowLampBlink(int minutesCommingFromTheClock, string firstLampBlink)
+        public StringBuilder FindLastRowLampBlink(int minutesCommingFromTheClock, StringBuilder firstLampBlink)
         {
-            StringBuilder lastRowLampBlink = new StringBuilder();
-            int minutesModule = minutesCommingFromTheClock % HourOfTheFirstRowLamp;
+            int minutesModule = minutesCommingFromTheClock % ClockLamps.HourOfTheFirstRowLamp;
 
             switch (minutesModule)
             {
-                case MinuteOfTheFirstLastLamp:
-                    lastRowLampBlink.Append("YOOO");
+                case ClockLamps.MinuteOfTheFirstLastLamp:
+                    firstLampBlink.Append("YOOO");
                     break;
-                case MinuteOfTheSecondtLastLamp:
-                    lastRowLampBlink.Append("YYOO");
+                case ClockLamps.MinuteOfTheSecondtLastLamp:
+                    firstLampBlink.Append("YYOO");
                     break;
-                case MinuteOfTheThirdLastLamp:
-                    lastRowLampBlink.Append("YYYO");
+                case ClockLamps.MinuteOfTheThirdLastLamp:
+                    firstLampBlink.Append("YYYO");
                     break;
-                case MinuteOfTheForthLastLamp:
-                    lastRowLampBlink.Append("YYYY");
+                case ClockLamps.MinuteOfTheForthLastLamp:
+                    firstLampBlink.Append("YYYY");
                     break;
                 default:
-                    lastRowLampBlink.Append("OOOO");
+                    firstLampBlink.Append("OOOO");
                     break;
             }
 
-            return firstLampBlink += lastRowLampBlink.ToString();
+            return firstLampBlink;
         }
     }
 }

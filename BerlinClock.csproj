@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDD\BerlinClockFeatureSteps.cs" />
+    <Compile Include="Classes\ClockLamps.cs" />
     <Compile Include="Classes\Interfaces\IMarkColorClock.cs" />
     <Compile Include="Classes\MarkColorClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

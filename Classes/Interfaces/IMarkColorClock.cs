@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace BerlinClock.Classes.Interfaces
 {
     public interface IMarkColorClock
     {
-        string FindFirstLampBlink(int secondsComingFromTheClock);
+        StringBuilder FindFirstLampBlink(int secondsComingFromTheClock);
 
-        string FindFirstRowLampBlink(int hoursCommingFromTheClock, string firstLampBlink);
+        StringBuilder FindFirstRowLampBlink(int hoursCommingFromTheClock, StringBuilder firstLampBlink);
 
-        string FindSecondRowLampBlink(int hoursCommingFromTheClock, string firstLampBlink);
+        StringBuilder FindSecondRowLampBlink(int hoursCommingFromTheClock, StringBuilder firstLampBlink);
 
-        string FindThirdRowLampBlink(int minutesCommingFromTheClock, string firstLampBlink);
+        StringBuilder FindThirdRowLampBlink(int minutesCommingFromTheClock, StringBuilder firstLampBlink);
 
-        string FindLastRowLampBlink(int minutesCommingFromTheClock, string firstLampBlink);
+        StringBuilder FindLastRowLampBlink(int minutesCommingFromTheClock, StringBuilder firstLampBlink);
     }
 }
