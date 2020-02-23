@@ -1,5 +1,5 @@
 ﻿using BerlinClock.Classes;
-using BerlinClock.Classes.Interfaces;
+using BerlinClock.Interfaces;
 using System;
 using System.Text;
 
@@ -11,11 +11,11 @@ namespace BerlinClock
 
         public string convertTime(string aTime)
         {
-            var newTime = aTime.Split(':');
+            var timeSplited = aTime.Split(':');
 
-            int hoursSplited = Convert.ToInt32(newTime[0]);
-            int minutesSplited = Convert.ToInt32(newTime[1]);
-            int secondsSplited = Convert.ToInt32(newTime[2]);
+            int hoursSplited = Convert.ToInt32(timeSplited[0]);
+            int minutesSplited = Convert.ToInt32(timeSplited[1]);
+            int secondsSplited = Convert.ToInt32(timeSplited[2]);
 
             StringBuilder firstLampBlink = this.markColorClock.FindFirstLampBlink(secondsSplited);
             StringBuilder firstRowLampsBlink = this.markColorClock.FindFirstRowLampBlink(hoursSplited, firstLampBlink);

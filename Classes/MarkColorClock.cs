@@ -1,4 +1,4 @@
-﻿using BerlinClock.Classes.Interfaces;
+﻿using BerlinClock.Interfaces;
 using System.Text;
 
 namespace BerlinClock.Classes

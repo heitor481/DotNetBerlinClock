@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace BerlinClock.Classes.Interfaces
+namespace BerlinClock.Interfaces
 {
     public interface IMarkColorClock
     {
