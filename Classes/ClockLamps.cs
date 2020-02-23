@@ -19,6 +19,7 @@
         public const int SecondPositionOfAnHour = 2;
         public const int FirstQuarterPositionOfAnHour = 3;
         public const int ForthPositionOfAnHour = 4;
+        public const int FithPositionOfAnHour = 5;
         public const int HalfQuarterPositionOfAnHour = 6;
         public const int SeventhPositionOfAnHour = 7;
         public const int EigthPositionOfAnHour = 8;

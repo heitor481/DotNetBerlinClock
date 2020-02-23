@@ -94,6 +94,9 @@ namespace BerlinClock.Classes
                     firstLampBlink.Append("YYROOOOOOOO\r\n");
                     break;
                 case ClockLamps.ForthPositionOfAnHour:
+                    firstLampBlink.Append("YYRYOOOOOOO\r\n");
+                    break;
+                case ClockLamps.FithPositionOfAnHour:
                     firstLampBlink.Append("YYRYYOOOOOO\r\n");
                     break;
                 case ClockLamps.HalfQuarterPositionOfAnHour:
